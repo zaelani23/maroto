@@ -90,7 +90,7 @@ func (s *tableList) Create(header []string, contents [][]string, defaultFontFami
 
 	// Draw contents
 	for index, content := range contents {
-		contentHeight := s.calcLinesHeight(content, tableProp.ContentProp, tableProp.Align[index])
+		contentHeight := s.calcLinesHeight(content, tableProp.ContentProp, tableProp.Align[0])
 
 		if tableProp.AlternatedBackground != nil && index%2 == 0 {
 			s.pdf.SetBackgroundColor(*tableProp.AlternatedBackground)
