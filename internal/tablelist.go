@@ -24,7 +24,6 @@ type MarotoGridPart interface {
 
 	// Inside Col/Row Components
 	Text(text string, prop ...props.Text)
-	GetCurrentPage() int
 }
 
 // TableList is the abstraction to create a table with header and contents
@@ -34,10 +33,9 @@ type TableList interface {
 }
 
 type tableList struct {
-	pdf           MarotoGridPart
-	text          Text
-	font          Font
-	lastPageIndex int
+	pdf  MarotoGridPart
+	text Text
+	font Font
 }
 
 // NewTableList create a TableList
@@ -73,10 +71,6 @@ func (s *tableList) Create(header []string, contents [][]string, defaultFontFami
 	tableProp.MakeValid(header, defaultFontFamily)
 	headerHeight := s.calcLinesHeight(header, tableProp.HeaderProp, tableProp.Align[0])
 
-	if tableProp.ShowHeaderOnNewPage {
-		s.lastPageIndex = s.pdf.GetCurrentPage()
-	}
-
 	// Draw header
 	s.pdf.Row(headerHeight+1, func() {
 		for i, h := range header {
@@ -97,21 +91,6 @@ func (s *tableList) Create(header []string, contents [][]string, defaultFontFami
 	// Draw contents
 	for index, content := range contents {
 		contentHeight := s.calcLinesHeight(content, tableProp.ContentProp, tableProp.Align[0])
-
-		if tableProp.ShowHeaderOnNewPage {
-			// Draw header
-			s.pdf.Row(headerHeight+1, func() {
-				for i, h := range header {
-					hs := h
-
-					s.pdf.Col(tableProp.HeaderProp.GridSizes[i], func() {
-						reason := hs
-						s.pdf.Text(reason, tableProp.HeaderProp.ToTextProp(tableProp.Align[0], 0, false, 0.0))
-					})
-				}
-			})
-			s.lastPageIndex = s.pdf.GetCurrentPage()
-		}
 
 		if tableProp.AlternatedBackground != nil && index%2 == 0 {
 			s.pdf.SetBackgroundColor(*tableProp.AlternatedBackground)
