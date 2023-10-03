@@ -69,7 +69,7 @@ func (s *tableList) Create(header []string, contents [][]string, defaultFontFami
 	}
 
 	tableProp.MakeValid(header, defaultFontFamily)
-	headerHeight := s.calcLinesHeight(header, tableProp.HeaderProp, tableProp.Align)
+	headerHeight := s.calcLinesHeight(header, tableProp.HeaderProp, tableProp.Align[0])
 
 	// Draw header
 	s.pdf.Row(headerHeight+1, func() {
@@ -78,7 +78,7 @@ func (s *tableList) Create(header []string, contents [][]string, defaultFontFami
 
 			s.pdf.Col(tableProp.HeaderProp.GridSizes[i], func() {
 				reason := hs
-				s.pdf.Text(reason, tableProp.HeaderProp.ToTextProp(tableProp.Align, 0, false, 0.0))
+				s.pdf.Text(reason, tableProp.HeaderProp.ToTextProp(tableProp.Align[i], 0, false, 0.0))
 			})
 		}
 	})
@@ -90,7 +90,7 @@ func (s *tableList) Create(header []string, contents [][]string, defaultFontFami
 
 	// Draw contents
 	for index, content := range contents {
-		contentHeight := s.calcLinesHeight(content, tableProp.ContentProp, tableProp.Align)
+		contentHeight := s.calcLinesHeight(content, tableProp.ContentProp, tableProp.Align[index])
 
 		if tableProp.AlternatedBackground != nil && index%2 == 0 {
 			s.pdf.SetBackgroundColor(*tableProp.AlternatedBackground)
@@ -101,7 +101,7 @@ func (s *tableList) Create(header []string, contents [][]string, defaultFontFami
 				cs := c
 
 				s.pdf.Col(tableProp.ContentProp.GridSizes[i], func() {
-					s.pdf.Text(cs, tableProp.ContentProp.ToTextProp(tableProp.Align, 0, false, 0.0))
+					s.pdf.Text(cs, tableProp.ContentProp.ToTextProp(tableProp.Align[i], 0, false, 0.0))
 				})
 			}
 		})
