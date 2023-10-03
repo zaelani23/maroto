@@ -3,10 +3,10 @@ package pdf_test
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/johnfercher/maroto/pkg/color"
-	"github.com/johnfercher/maroto/pkg/consts"
-	"github.com/johnfercher/maroto/pkg/pdf"
-	"github.com/johnfercher/maroto/pkg/props"
+	"github.com/zaelani23/maroto/pkg/color"
+	"github.com/zaelani23/maroto/pkg/consts"
+	"github.com/zaelani23/maroto/pkg/pdf"
+	"github.com/zaelani23/maroto/pkg/props"
 	"testing"
 	"time"
 )
@@ -196,7 +196,7 @@ func ExamplePdfMaroto_TableList() {
 			Size:      10.0,
 			GridSizes: []uint{3, 9},
 		},
-		Align: consts.Center,
+		Align: []consts.Align{consts.Center, consts.Center},
 		AlternatedBackground: &color.Color{
 			Red:   100,
 			Green: 20,

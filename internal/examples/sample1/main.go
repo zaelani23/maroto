@@ -3,10 +3,10 @@ package main
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/johnfercher/maroto/pkg/color"
-	"github.com/johnfercher/maroto/pkg/consts"
-	"github.com/johnfercher/maroto/pkg/pdf"
-	"github.com/johnfercher/maroto/pkg/props"
+	"github.com/zaelani23/maroto/pkg/color"
+	"github.com/zaelani23/maroto/pkg/consts"
+	"github.com/zaelani23/maroto/pkg/pdf"
+	"github.com/zaelani23/maroto/pkg/props"
 	"io/ioutil"
 	"os"
 	"strconv"
@@ -196,8 +196,7 @@ func main() {
 			Family:    consts.Courier,
 			Style:     consts.BoldItalic,
 		},
-		Align: consts.Center,
-		Line:  true,
+		Line: true,
 	})
 
 	err = m.OutputFileAndClose("internal/examples/pdfs/sample1.pdf")

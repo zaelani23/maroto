@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/johnfercher/maroto/pkg/color"
-	"github.com/johnfercher/maroto/pkg/consts"
-	"github.com/johnfercher/maroto/pkg/pdf"
-	"github.com/johnfercher/maroto/pkg/props"
+	"github.com/zaelani23/maroto/pkg/color"
+	"github.com/zaelani23/maroto/pkg/consts"
+	"github.com/zaelani23/maroto/pkg/pdf"
+	"github.com/zaelani23/maroto/pkg/props"
 	"os"
 	"time"
 )
@@ -117,7 +117,7 @@ func main() {
 			Size:      8,
 			GridSizes: []uint{3, 4, 2, 3},
 		},
-		Align:                consts.Center,
+		Align:                []consts.Align{consts.Center},
 		AlternatedBackground: &grayColor,
 		HeaderContentSpace:   1,
 		Line:                 false,

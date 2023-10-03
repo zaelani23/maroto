@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/johnfercher/maroto/pkg/color"
-	"github.com/johnfercher/maroto/pkg/consts"
-	"github.com/johnfercher/maroto/pkg/pdf"
-	"github.com/johnfercher/maroto/pkg/props"
+	"github.com/zaelani23/maroto/pkg/color"
+	"github.com/zaelani23/maroto/pkg/consts"
+	"github.com/zaelani23/maroto/pkg/pdf"
+	"github.com/zaelani23/maroto/pkg/props"
 	"os"
 	"time"
 )
@@ -23,7 +23,6 @@ func main() {
 	header, content := getLanguageSample()
 
 	m.TableList(header, content, props.TableList{
-		Align: consts.Center,
 		AlternatedBackground: &color.Color{
 			Red:   210,
 			Green: 210,

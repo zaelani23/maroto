@@ -1,9 +1,9 @@
 package internal
 
 import (
-	"github.com/johnfercher/maroto/internal/fpdf"
-	"github.com/johnfercher/maroto/pkg/consts"
-	"github.com/johnfercher/maroto/pkg/props"
+	"github.com/zaelani23/maroto/internal/fpdf"
+	"github.com/zaelani23/maroto/pkg/consts"
+	"github.com/zaelani23/maroto/pkg/props"
 	"strings"
 )
 

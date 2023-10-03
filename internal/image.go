@@ -5,10 +5,10 @@ import (
 	"encoding/base64"
 	"errors"
 	"github.com/google/uuid"
-	"github.com/johnfercher/maroto/internal/fpdf"
-	"github.com/johnfercher/maroto/pkg/consts"
-	"github.com/johnfercher/maroto/pkg/props"
 	"github.com/jung-kurt/gofpdf"
+	"github.com/zaelani23/maroto/internal/fpdf"
+	"github.com/zaelani23/maroto/pkg/consts"
+	"github.com/zaelani23/maroto/pkg/props"
 )
 
 // Image is the abstraction which deals of how to add images in a PDF

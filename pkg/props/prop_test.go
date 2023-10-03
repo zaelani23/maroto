@@ -1,9 +1,9 @@
 package props_test
 
 import (
-	"github.com/johnfercher/maroto/pkg/consts"
-	"github.com/johnfercher/maroto/pkg/props"
 	"github.com/stretchr/testify/assert"
+	"github.com/zaelani23/maroto/pkg/consts"
+	"github.com/zaelani23/maroto/pkg/props"
 	"testing"
 )
 
@@ -347,9 +347,7 @@ func TestTableListProp_MakeValid(t *testing.T) {
 		},
 		{
 			"When Align is empty",
-			&props.TableList{
-				Align: "",
-			},
+			&props.TableList{},
 			func(t *testing.T, m *props.TableList) {
 				assert.Equal(t, m.Align, consts.Left)
 			},
