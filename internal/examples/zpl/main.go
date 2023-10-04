@@ -91,7 +91,7 @@ func main() {
 
 	err := m.OutputFileAndClose("internal/examples/pdfs/zpl.pdf")
 	if err != nil {
-		fmt.Println("Could not save PDF:", err)
+		fmt.Println("Could not save PDFs:", err)
 		os.Exit(1)
 	}
 
