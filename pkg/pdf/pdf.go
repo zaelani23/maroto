@@ -380,10 +380,10 @@ func (s *PdfMaroto) Row(height float64, closure func()) {
 // components inside.
 func (s *PdfMaroto) Col(width uint, closure func()) {
 	if width == 0 {
-		width = 12
+		width = 24
 	}
 
-	percent := float64(width) / float64(12)
+	percent := float64(width) / float64(24)
 
 	pageWidth, _ := s.Pdf.GetPageSize()
 	left, _, right, _ := s.Pdf.GetMargins()
