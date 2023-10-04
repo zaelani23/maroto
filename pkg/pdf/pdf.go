@@ -20,7 +20,7 @@ type Maroto interface {
 	ColSpace(gridSize uint)
 
 	// Registers
-	RegisterHeader(closure func())
+	RegisterHeader(allPage bool, exceptPage int, closure func())
 	RegisterFooter(closure func())
 
 	// Outside Col/Row Components
@@ -75,8 +75,10 @@ type PdfMaroto struct {
 	TableListHelper internal.TableList
 
 	// Closures with Maroto Header and Footer logic
-	headerClosure func()
-	footerClosure func()
+	headerClosure    func()
+	headerAllPage    bool
+	exceptHeaderPage int
+	footerClosure    func()
 
 	// Computed values
 	pageIndex                 int
@@ -178,7 +180,9 @@ func (s *PdfMaroto) AddPage() {
 
 // RegisterHeader define a sequence of Rows, Lines ou TableLists
 // which will be added in every new page
-func (s *PdfMaroto) RegisterHeader(closure func()) {
+func (s *PdfMaroto) RegisterHeader(allPage bool, exceptPage int, closure func()) {
+	s.headerAllPage = allPage
+	s.exceptHeaderPage = exceptPage
 	s.headerClosure = closure
 }
 
@@ -345,10 +349,20 @@ func (s *PdfMaroto) Row(height float64, closure func()) {
 
 	// If is a new page, add the header
 	if !s.headerFooterContextActive {
-		if s.offsetY == 0 {
-			s.headerFooterContextActive = true
-			s.header()
-			s.headerFooterContextActive = false
+		if s.headerAllPage {
+			if s.offsetY == 0 {
+				s.headerFooterContextActive = true
+				s.header()
+				s.headerFooterContextActive = false
+			}
+		} else {
+			if s.exceptHeaderPage != s.GetCurrentPage() {
+				if s.offsetY == 0 {
+					s.headerFooterContextActive = true
+					s.header()
+					s.headerFooterContextActive = false
+				}
+			}
 		}
 	}
 
