@@ -174,7 +174,7 @@ func (s *PdfMaroto) AddPage() {
 	maxOffsetPage := int(pageHeight - bottom - top)
 
 	s.Row(float64(maxOffsetPage-totalOffsetY), func() {
-		s.ColSpace(12)
+		s.ColSpace(24)
 	})
 }
 
@@ -584,7 +584,7 @@ func (s *PdfMaroto) footer() {
 	maxOffsetPage := int(pageHeight - bottom - top)
 
 	s.Row(float64(maxOffsetPage-totalOffsetY), func() {
-		s.ColSpace(12)
+		s.ColSpace(24)
 	})
 
 	if s.footerClosure != nil {
@@ -599,7 +599,7 @@ func (s *PdfMaroto) header() {
 	s.SetBackgroundColor(color.NewWhite())
 
 	s.Row(s.marginTop, func() {
-		s.ColSpace(12)
+		s.ColSpace(24)
 	})
 
 	if s.headerClosure != nil {

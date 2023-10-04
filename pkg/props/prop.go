@@ -86,7 +86,7 @@ type TableListContent struct {
 	// Size of the text
 	Size float64
 	// GridSizes is the custom properties of the size of the grid
-	// the sum of the values cannot be greater than 12, if this
+	// the sum of the values cannot be greater than 24, if this
 	// value is not provided the width of all columns will be the
 	// same
 	GridSizes []uint
@@ -262,7 +262,7 @@ func (s *TableList) MakeValid(header []string, defaultFamily string) {
 	}
 
 	if len(s.HeaderProp.GridSizes) == 0 {
-		gridSize := uint(12.0 / len(header))
+		gridSize := uint(24.0 / len(header))
 		s.HeaderProp.GridSizes = []uint{}
 
 		for range header {
@@ -289,7 +289,7 @@ func (s *TableList) MakeValid(header []string, defaultFamily string) {
 	}
 
 	if len(s.ContentProp.GridSizes) == 0 {
-		gridSize := uint(12.0 / len(header))
+		gridSize := uint(24.0 / len(header))
 		s.ContentProp.GridSizes = []uint{}
 
 		for range header {

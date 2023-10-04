@@ -2,7 +2,7 @@ package consts
 
 const (
 	// MaxGridSum represents the max value from a cell grid width
-	MaxGridSum float64 = 12.0
+	MaxGridSum float64 = 24.0
 )
 
 const (
